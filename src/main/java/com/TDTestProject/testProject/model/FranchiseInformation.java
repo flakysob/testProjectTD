@@ -1,10 +1,15 @@
 package com.TDTestProject.testProject.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 public class FranchiseInformation {
+    @JsonProperty("id")
     private final UUID id;
+    @JsonProperty("franchiseName")
     private String franchiseName;
+    @JsonProperty("location")
     private String location;
 
     public FranchiseInformation(UUID id, String franchiseName, String location) {
