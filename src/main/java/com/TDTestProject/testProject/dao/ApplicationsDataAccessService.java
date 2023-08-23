@@ -43,12 +43,30 @@ public class ApplicationsDataAccessService implements ApplicationsDAO{
     }
 
     @Override
-    public int deleteApplicationById(UUID id) {
-        return 0;
+    public int deleteApplicationById(UUID id) { //Id ile kayıdı bulmalı ve eğer kayıt verilen id ile eşit ise kayıt silinmeli.
+        Optional<Applications> xApplication = SelectApplicationById(id); //Daha önceden hazırlanan id seçme metodunu kullandık.
+        if(xApplication.isEmpty()) //Eğer kayıt boş döner ise (yani kayıt bulunamaz ise)
+        {
+            return 0;
+        }
+        DB.remove(xApplication.get());  //Eğer kayıt var ise örneği al ve kaldır.
+        return 1;
     }
 
+
+
+    //Belirli bir kimlikle (UUID) belirli bir başvuruyu güncellemek için kullanılır. İlk olarak, başvurunun mevcut olup olmadığını kontrol eder ve bulunursa, başvurunun koleksiyon içindeki indeksini alır. Daha sonra, başvuruyu günceller ve işlem başarılıysa 1, başarısızsa 0 döndürür.
     @Override
-    public int updateApplicationById(UUID id, Applications applications) {
-        return 0;
+    public int updateApplicationById(UUID id, Applications update) {
+        return SelectApplicationById(id)
+                .map(a -> {
+                    int indexOfApplicationToUpdate = DB.indexOf(a); //Kaydın bulunamaması durumunda -1 döner, boş ise 0 döner ve kayıdın bulunması durumunda index döner
+                    if(indexOfApplicationToUpdate >= 0){ //Eğer istenen index ile eşlenirse
+                        DB.set(indexOfApplicationToUpdate, new Applications(id, update.getFullName(), update.getTcIdentityNumber(), update.getAddress(), update.getPhoneNumber(), update.getEmail(), update.getBirthDate(), update.isHasRetailExperience(), update.getReasonForChoosingLokumcuBaba(), update.getLocation(), update.getInvestmentAmount(), update.getAdditionalNotes()));
+                        return 1; //İşler yolunda gitti demektir.
+                    }
+                    return 0; //if koşulu sağlanamadı, index eşleşmedi, işler yolunda gitmedi.
+                })
+                .orElse( 0); //Exception
     }
 }

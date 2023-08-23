@@ -31,4 +31,12 @@ public class ApplicationsService {
     public Optional<Applications> getApplicationsById(UUID id){
         return applicationsDAO.SelectApplicationById(id);
     }
+
+    public int deleteApplication(UUID id){
+        return applicationsDAO.deleteApplicationById(id);
+    }
+
+    public int updateApplication(UUID id, Applications newApplications){
+        return applicationsDAO.updateApplicationById(id, newApplications);
+    }
 }

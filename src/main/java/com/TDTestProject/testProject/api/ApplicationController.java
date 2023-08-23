@@ -29,7 +29,17 @@ public class ApplicationController {
     }
 
     @GetMapping(path = "{id}")
-    public Applications getPersonById(@PathVariable("id") UUID id){
-        return applicationsService.getApplicationsById(id).orElse(null); //Normalde orElse için özelleştirilmiş geri dönüş değeri (bulunamadı mesajı veya exception) döndürülür.
+    public Applications getApplicationById(@PathVariable("id") UUID id){
+        return applicationsService.getApplicationsById(id).orElse(null); //Normalde orElse için özelleştirilmiş geri dönüş değeri (bulunamadı mesajı veya exception) döndürülür. Bu şartlar altında herhangi UUID formatına uygun veri verilirse boş bir değer döner.
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void deleteApplicationById(@PathVariable("id") UUID id){
+        applicationsService.deleteApplication(id);
+    }
+
+    @PutMapping(path = "{id}")
+    public void updateApplications(@PathVariable("id") UUID id, @RequestBody Applications applicationToUpdate){
+        applicationsService.updateApplication(id, applicationToUpdate);
     }
 }
