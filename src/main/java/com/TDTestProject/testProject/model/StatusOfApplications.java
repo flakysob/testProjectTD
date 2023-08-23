@@ -1,9 +1,13 @@
 package com.TDTestProject.testProject.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 public class StatusOfApplications {
+    @JsonProperty("id")
     private final UUID id;
+    @JsonProperty("status")
     private String status;
 
     public StatusOfApplications(UUID id, String status){

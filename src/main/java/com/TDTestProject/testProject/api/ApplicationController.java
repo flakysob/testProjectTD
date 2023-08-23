@@ -3,10 +3,9 @@ package com.TDTestProject.testProject.api;
 import com.TDTestProject.testProject.model.Applications;
 import com.TDTestProject.testProject.service.ApplicationsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("/api/v1/applications")
 @RestController
@@ -21,5 +20,10 @@ public class ApplicationController {
     @PostMapping
     public void addApplications(@RequestBody Applications applications){
         applicationsService.addApplications(applications);
+    }
+
+    @GetMapping
+    public List<Applications> getAllApplications(){
+        return applicationsService.getAllApplications();
     }
 }

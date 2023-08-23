@@ -3,6 +3,7 @@ package com.TDTestProject.testProject.dao;
 import com.TDTestProject.testProject.model.Applications;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 public interface ApplicationsDAO {
@@ -12,6 +13,8 @@ public interface ApplicationsDAO {
         UUID id = UUID.randomUUID();
         return insertApplication(id, applications.getFullName(),applications.getTcIdentityNumber());
     }
+
+    List<Applications> SelectAllApplications();
 
 
 }

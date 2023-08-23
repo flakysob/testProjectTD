@@ -11,8 +11,15 @@ import java.util.UUID;
 public class ApplicationsDataAccessService implements ApplicationsDAO{
     private static List<Applications> DB = new ArrayList<>();
 
+
     @Override
     public int insertApplication(UUID id, String fullName, String tcIdentityNumber) {
+        DB.add(new Applications(id, fullName, tcIdentityNumber));
         return 1;
+    }
+
+    @Override
+    public List<Applications> SelectAllApplications() {
+        return DB;
     }
 }

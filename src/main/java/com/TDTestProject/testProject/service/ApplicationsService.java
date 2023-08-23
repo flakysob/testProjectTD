@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ApplicationsService {
 
@@ -17,7 +19,10 @@ public class ApplicationsService {
     }
 
     public int addApplications(Applications applications){
-        return applicationsDAO.insertApplication(applications,applications.getTcIdentityNumber()); //TODO: Hata olabilir
+        return applicationsDAO.insertApplication(applications,applications.getTcIdentityNumber());
+    }
 
+    public List<Applications> getAllApplications(){
+        return applicationsDAO.SelectAllApplications();
     }
 }
