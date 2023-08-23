@@ -31,10 +31,32 @@ public class Applications {
     private String additionalNotes; //Eklenmek istenen notlar
 
 
-    public Applications(UUID id, String fullName, String tcIdentityNumber) {
+    public Applications(
+            UUID id,
+            String fullName,
+            String tcIdentityNumber,
+            String address,
+            String phoneNumber,
+            String email,
+            String birthDate,
+            boolean hasRetailExperience,
+            String reasonForChoosingLokumcuBaba,
+            String location,
+            double investmentAmount,
+            String additionalNotes
+    ) {
         this.id = id;
         this.fullName = fullName;
         this.tcIdentityNumber = tcIdentityNumber;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.birthDate = birthDate;
+        this.hasRetailExperience = hasRetailExperience;
+        this.reasonForChoosingLokumcuBaba = reasonForChoosingLokumcuBaba;
+        this.location = location;
+        this.investmentAmount = investmentAmount;
+        this.additionalNotes = additionalNotes;
     }
 
 

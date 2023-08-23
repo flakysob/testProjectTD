@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RequestMapping("/api/v1/applications")
 @RestController
@@ -25,5 +26,10 @@ public class ApplicationController {
     @GetMapping
     public List<Applications> getAllApplications(){
         return applicationsService.getAllApplications();
+    }
+
+    @GetMapping(path = "{id}")
+    public Applications getPersonById(@PathVariable("id") UUID id){
+        return applicationsService.getApplicationsById(id).orElse(null); //Normalde orElse için özelleştirilmiş geri dönüş değeri (bulunamadı mesajı veya exception) döndürülür.
     }
 }
