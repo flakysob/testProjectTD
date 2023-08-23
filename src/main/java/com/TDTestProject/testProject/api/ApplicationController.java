@@ -5,6 +5,8 @@ import com.TDTestProject.testProject.service.ApplicationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,7 +21,7 @@ public class ApplicationController {
     }
 
     @PostMapping
-    public void addApplications(@RequestBody Applications applications){
+    public void addApplications(@Valid @NotNull @RequestBody Applications applications){
         applicationsService.addApplications(applications);
     }
 
@@ -39,7 +41,7 @@ public class ApplicationController {
     }
 
     @PutMapping(path = "{id}")
-    public void updateApplications(@PathVariable("id") UUID id, @RequestBody Applications applicationToUpdate){
+    public void updateApplications(@PathVariable("id") UUID id, @Valid @NotNull @RequestBody Applications applicationToUpdate){
         applicationsService.updateApplication(id, applicationToUpdate);
     }
 }

@@ -1,48 +1,50 @@
 package com.TDTestProject.testProject.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.validation.constraints.NotBlank;
 
 import java.util.UUID;
 
 public class Applications {
-    @JsonProperty("id")
     private final UUID id;
-    @JsonProperty("name")
+    @NotBlank
     private String fullName;
-    @JsonProperty("tcIdentityNumber")
     private String tcIdentityNumber;
-    @JsonProperty("address")
     private String address;
-    @JsonProperty("phoneNumber")
     private String phoneNumber;
-    @JsonProperty("email")
     private String email;
-    @JsonProperty("birthDate")
     private String birthDate;
-    @JsonProperty("hasRetailExperience")
     private boolean hasRetailExperience; //Perakende tecrübesi
-    @JsonProperty("reasonForChoosingLokumcuBaba")
     private String reasonForChoosingLokumcuBaba; //Lokumcı Baba'yı tercih etmenizin sebebi nedir?
-    @JsonProperty("location")
     private String location;
-    @JsonProperty("investmentAmount")
     private double investmentAmount; //Yatırım miktarı
-    @JsonProperty("additionalNotes")
     private String additionalNotes; //Eklenmek istenen notlar
 
 
     public Applications(
+            @JsonProperty("id")
             UUID id,
+            @JsonProperty("name")
             String fullName,
+            @JsonProperty("tcIdentityNumber")
             String tcIdentityNumber,
+            @JsonProperty("address")
             String address,
+            @JsonProperty("phoneNumber")
             String phoneNumber,
+            @JsonProperty("email")
             String email,
+            @JsonProperty("birthDate")
             String birthDate,
+            @JsonProperty("hasRetailExperience")
             boolean hasRetailExperience,
+            @JsonProperty("reasonForChoosingLokumcuBaba")
             String reasonForChoosingLokumcuBaba,
+            @JsonProperty("location")
             String location,
+            @JsonProperty("investmentAmount")
             double investmentAmount,
+            @JsonProperty("additionalNotes")
             String additionalNotes
     ) {
         this.id = id;
