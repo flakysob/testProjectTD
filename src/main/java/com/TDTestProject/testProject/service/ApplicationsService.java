@@ -16,7 +16,7 @@ public class ApplicationsService {
     private final ApplicationsDAO applicationsDAO;
 
     @Autowired
-    public ApplicationsService(@Qualifier("AppDAO") ApplicationsDAO applicationsDAO) {
+    public ApplicationsService(@Qualifier("MySQL") ApplicationsDAO applicationsDAO) {
         this.applicationsDAO = applicationsDAO;
     }
 
