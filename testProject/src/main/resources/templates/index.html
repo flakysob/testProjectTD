@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .content{
+            max-width: 900px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h2 th:text="${hello}"></h2>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>İsim</th>
+                <th>TC Kimlik Numarası</th>
+                <th>Adres</th>
+                <th>Telefon No.</th>
+                <th>E-Mail</th>
+                <th>Doğum Tarihi</th>
+                <th>Perakende Tecrübesi</th>
+                <th>Neden Lokumcu Baba</th>
+                <th>Tercih Edilen Konum</th>
+                <th>Yatırım Miktarı</th>
+                <th>Not</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="deneme , iterator : ${denemes}">
+                <th th:text="${iterator.index + 1}" scope="row"></th>
+                <td th:text = "${deneme.full_name}"></td>
+                <td th:text = "${deneme.tc_identity_number}"></td>
+                <td th:text = "${deneme.address}"></td>
+                <td th:text = "${deneme.phone_number}"></td>
+                <td th:text = "${deneme.email}"></td>
+                <td th:text = "${deneme.birth_date}"></td>
+                <td th:text = "${deneme.has_retail_experience}"></td>
+                <td th:text = "${deneme.reason_for_choosing_lokumcu_baba}"></td>
+                <td th:text = "${deneme.location}"></td>
+                <td th:text = "${deneme.investment_amount}"></td>
+                <td th:text = "${deneme.additional_notes}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
